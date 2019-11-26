@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Cache/etc/cache.xsd">
+    <type name="wordpress_integration" translate="label,description" instance="Mooore\WordpressIntegration\Model\Cache\Type">
+        <label>Wordpress API cache</label>
+        <description>Cache for Wordpress API results.</description>
+    </type>
+</config>
