@@ -3,8 +3,8 @@
         xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
     <table comment="mooore_wordpressintegration_site Table" engine="innodb" name="mooore_wordpressintegration_site"
            resource="default">
-        <column comment="Entity Id" identity="true" name="site_id" nullable="false" padding="6" unsigned="false"
-                xsi:type="smallint"/>
+        <column comment="Site Id" identity="true" name="site_id" nullable="false" padding="6" unsigned="true"
+                xsi:type="int"/>
         <constraint referenceId="PRIMARY" xsi:type="primary">
             <column name="site_id"/>
         </constraint>
