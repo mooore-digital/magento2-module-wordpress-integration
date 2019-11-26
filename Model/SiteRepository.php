@@ -17,6 +17,7 @@ use Magento\Framework\Reflection\DataObjectProcessor;
 use Magento\Store\Model\StoreManagerInterface;
 use Mooore\WordpressIntegration\Api\Data\SiteInterface;
 use Mooore\WordpressIntegration\Api\Data\SiteInterfaceFactory;
+use Mooore\WordpressIntegration\Api\Data\SiteSearchResultsInterface;
 use Mooore\WordpressIntegration\Api\Data\SiteSearchResultsInterfaceFactory;
 use Mooore\WordpressIntegration\Api\SiteRepositoryInterface;
 use Mooore\WordpressIntegration\Model\ResourceModel\Site as ResourceSite;
@@ -111,13 +112,8 @@ class SiteRepository implements SiteRepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function save(SiteInterface $site)
+    public function save(SiteInterface $site): SiteInterface
     {
-        /* if (empty($site->getStoreId())) {
-            $storeId = $this->storeManager->getStore()->getId();
-            $site->setStoreId($storeId);
-        } */
-
         $siteData = $this->extensibleDataObjectConverter->toNestedArray(
             $site,
             [],
@@ -141,7 +137,7 @@ class SiteRepository implements SiteRepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function getList(SearchCriteriaInterface $criteria)
+    public function getList(SearchCriteriaInterface $criteria): SiteSearchResultsInterface
     {
         $collection = $this->siteCollectionFactory->create();
 
@@ -169,7 +165,7 @@ class SiteRepository implements SiteRepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function deleteById($siteId)
+    public function deleteById($siteId): bool
     {
         return $this->delete($this->get($siteId));
     }
@@ -177,9 +173,8 @@ class SiteRepository implements SiteRepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function delete(
-        SiteInterface $site
-    ) {
+    public function delete(SiteInterface $site): bool
+    {
         try {
             $siteModel = $this->siteFactory->create();
             $this->resource->load($siteModel, $site->getSiteId());
@@ -197,7 +192,7 @@ class SiteRepository implements SiteRepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function get($siteId)
+    public function get($siteId): SiteInterface
     {
         $site = $this->siteFactory->create();
         $this->resource->load($site, $siteId);

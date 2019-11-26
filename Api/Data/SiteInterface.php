@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Mooore\WordpressIntegration\Api\Data;
 
 use Magento\Framework\Api\ExtensibleDataInterface;
+use Magento\Tests\NamingConvention\true\string;
 use Mooore\WordpressIntegration\Api\Data\SiteExtensionInterface;
 
 interface SiteInterface extends ExtensibleDataInterface
@@ -31,7 +32,7 @@ interface SiteInterface extends ExtensibleDataInterface
      * Get name
      * @return string|null
      */
-    public function getName();
+    public function getName(): string;
 
     /**
      * Set name
@@ -44,7 +45,7 @@ interface SiteInterface extends ExtensibleDataInterface
      * Retrieve existing extension attributes object or create a new one.
      * @return \Mooore\WordpressIntegration\Api\Data\SiteExtensionInterface|null
      */
-    public function getExtensionAttributes();
+    public function getExtensionAttributes(): ?SiteExtensionInterface;
 
     /**
      * Set an extension attributes object.
@@ -57,7 +58,7 @@ interface SiteInterface extends ExtensibleDataInterface
      * Get baseurl
      * @return string|null
      */
-    public function getBaseurl();
+    public function getBaseurl(): string;
 
     /**
      * Set baseurl
@@ -70,7 +71,7 @@ interface SiteInterface extends ExtensibleDataInterface
      * Get enabled
      * @return string|null
      */
-    public function getEnabled();
+    public function getEnabled(): bool;
 
     /**
      * Set enabled

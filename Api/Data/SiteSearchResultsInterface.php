@@ -12,7 +12,7 @@ interface SiteSearchResultsInterface extends SearchResultsInterface
      * Get Site list.
      * @return SiteInterface[]
      */
-    public function getItems();
+    public function getItems(): array;
 
     /**
      * Set name list.

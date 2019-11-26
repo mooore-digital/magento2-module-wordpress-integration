@@ -11,9 +11,10 @@ class DeleteButton extends GenericButton implements ButtonProviderInterface
     /**
      * @return array
      */
-    public function getButtonData()
+    public function getButtonData(): array
     {
         $data = [];
+
         if ($this->getModelId()) {
             $data = [
                 'label' => __('Delete Site'),
@@ -24,6 +25,7 @@ class DeleteButton extends GenericButton implements ButtonProviderInterface
                 'sort_order' => 20,
             ];
         }
+
         return $data;
     }
 
@@ -32,7 +34,7 @@ class DeleteButton extends GenericButton implements ButtonProviderInterface
      *
      * @return string
      */
-    public function getDeleteUrl()
+    public function getDeleteUrl(): string
     {
         return $this->getUrl('*/*/delete', ['site_id' => $this->getModelId()]);
     }

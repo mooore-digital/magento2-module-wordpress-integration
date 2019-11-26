@@ -1,22 +1,33 @@
 {
-    "name": "mooore/module-wordpressintegration",
-    "description": "",
-    "type": "magento2-module",
-    "license": "proprietary",
-    "authors": [
-        {
-            "email": "info@mooore.nl",
-            "name": "Mooore Digital"
-        }
-    ],
-    "minimum-stability": "dev",
-    "require": {},
-    "autoload": {
-        "psr-4": {
-            "Mooore\\WordpressIntegration\\": ""
-        },
-        "files": [
-            "registration.php"
-        ]
+  "name": "mooore/module-wordpressintegration",
+  "description": "",
+  "type": "magento2-module",
+  "license": "proprietary",
+  "authors": [
+    {
+      "email": "info@mooore.nl",
+      "name": "Mooore Digital"
     }
+  ],
+  "minimum-stability": "dev",
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "Mooore\\WordpressIntegration\\": ""
+    },
+    "files": [
+      "registration.php"
+    ]
+  },
+  "require-dev": {
+    "magento/magento-coding-standard": "dev-master"
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "([ $COMPOSER_DEV_MODE -eq 0 ] || vendor/bin/phpcs --config-set installed_paths ../../magento/magento-coding-standard/)"
+    ],
+    "post-update-cmd": [
+      "([ $COMPOSER_DEV_MODE -eq 0 ] || vendor/bin/phpcs --config-set installed_paths ../../magento/magento-coding-standard/)"
+    ]
+  }
 }

@@ -33,7 +33,7 @@ abstract class Site extends Action
      * @param Page $resultPage
      * @return Page
      */
-    public function initPage($resultPage)
+    public function initPage(Page $resultPage): Page
     {
         $resultPage->setActiveMenu(self::ADMIN_RESOURCE)
             ->addBreadcrumb(__('Mooore'), __('Mooore'))

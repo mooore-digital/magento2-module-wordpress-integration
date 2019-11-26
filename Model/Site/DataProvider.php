@@ -10,8 +10,13 @@ use Mooore\WordpressIntegration\Model\ResourceModel\Site\CollectionFactory;
 
 class DataProvider extends AbstractDataProvider
 {
+    /**
+     * @var DataPersistorInterface
+     */
     private $dataPersistor;
-
+    /**
+     * @var array
+     */
     private $loadedData;
 
     /**

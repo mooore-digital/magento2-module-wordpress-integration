@@ -33,9 +33,9 @@ class Site extends AbstractExtensibleObject implements SiteInterface
      * Get name
      * @return string|null
      */
-    public function getName()
+    public function getName(): string
     {
-        return $this->_get(self::NAME);
+        return (string) $this->_get(self::NAME);
     }
 
     /**
@@ -52,7 +52,7 @@ class Site extends AbstractExtensibleObject implements SiteInterface
      * Retrieve existing extension attributes object or create a new one.
      * @return SiteExtensionInterface|null
      */
-    public function getExtensionAttributes()
+    public function getExtensionAttributes(): ?SiteExtensionInterface
     {
         return $this->_getExtensionAttributes();
     }
@@ -71,9 +71,9 @@ class Site extends AbstractExtensibleObject implements SiteInterface
      * Get baseurl
      * @return string|null
      */
-    public function getBaseurl()
+    public function getBaseurl(): string
     {
-        return $this->_get(self::BASEURL);
+        return (string) $this->_get(self::BASEURL);
     }
 
     /**
@@ -90,9 +90,9 @@ class Site extends AbstractExtensibleObject implements SiteInterface
      * Get enabled
      * @return string|null
      */
-    public function getEnabled()
+    public function getEnabled(): bool
     {
-        return $this->_get(self::ENABLED);
+        return (bool) $this->_get(self::ENABLED);
     }
 
     /**

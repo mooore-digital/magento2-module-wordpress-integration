@@ -14,10 +14,17 @@ use Mooore\WordpressIntegration\Model\ResourceModel\Site\Collection;
 
 class Site extends AbstractModel
 {
+    /**
+     * @var SiteInterfaceFactory
+     */
     private $siteDataFactory;
-
+    /**
+     * @var DataObjectHelper
+     */
     private $dataObjectHelper;
-
+    /**
+     * @var string
+     */
     protected $_eventPrefix = 'mooore_wordpressintegration_site';
 
     /**
