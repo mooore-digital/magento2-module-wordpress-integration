@@ -1,42 +1,46 @@
 <?php
 
+declare(strict_types=1);
 
 namespace Mooore\WordpressIntegration\Api;
 
 use Magento\Framework\Api\SearchCriteriaInterface;
+use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Exception\NoSuchEntityException;
 use Mooore\WordpressIntegration\Api\Data\SiteInterface;
+use Mooore\WordpressIntegration\Api\Data\SiteSearchResultsInterface;
 
 interface SiteRepositoryInterface
 {
     /**
      * Save Site
-     * @param \Mooore\WordpressIntegration\Api\Data\SiteInterface $site
-     * @return \Mooore\WordpressIntegration\Api\Data\SiteInterface
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @param SiteInterface $site
+     * @return SiteInterface
+     * @throws LocalizedException
      */
     public function save(SiteInterface $site);
 
     /**
      * Retrieve Site
      * @param string $siteId
-     * @return \Mooore\WordpressIntegration\Api\Data\SiteInterface
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @return SiteInterface
+     * @throws LocalizedException
      */
     public function get($siteId);
 
     /**
      * Retrieve Site matching the specified criteria.
-     * @param \Magento\Framework\Api\SearchCriteriaInterface $searchCriteria
-     * @return \Mooore\WordpressIntegration\Api\Data\SiteSearchResultsInterface
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @param SearchCriteriaInterface $searchCriteria
+     * @return SiteSearchResultsInterface
+     * @throws LocalizedException
      */
     public function getList(SearchCriteriaInterface $searchCriteria);
 
     /**
      * Delete Site
-     * @param \Mooore\WordpressIntegration\Api\Data\SiteInterface $site
+     * @param SiteInterface $site
      * @return bool true on success
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @throws LocalizedException
      */
     public function delete(SiteInterface $site);
 
@@ -44,8 +48,8 @@ interface SiteRepositoryInterface
      * Delete Site by ID
      * @param string $siteId
      * @return bool true on success
-     * @throws \Magento\Framework\Exception\NoSuchEntityException
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @throws NoSuchEntityException
+     * @throws LocalizedException
      */
     public function deleteById($siteId);
 }

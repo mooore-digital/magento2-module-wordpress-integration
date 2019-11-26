@@ -1,19 +1,18 @@
 <?php
 
+declare(strict_types=1);
 
 namespace Mooore\WordpressIntegration\Model\Site;
 
-use Mooore\WordpressIntegration\Model\ResourceModel\Site\CollectionFactory;
 use Magento\Framework\App\Request\DataPersistorInterface;
+use Magento\Ui\DataProvider\AbstractDataProvider;
+use Mooore\WordpressIntegration\Model\ResourceModel\Site\CollectionFactory;
 
-class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
+class DataProvider extends AbstractDataProvider
 {
+    private $dataPersistor;
 
-    protected $collection;
-
-    protected $dataPersistor;
-
-    protected $loadedData;
+    private $loadedData;
 
     /**
      * Constructor
@@ -55,14 +54,14 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
             $this->loadedData[$model->getId()] = $model->getData();
         }
         $data = $this->dataPersistor->get('mooore_wordpressintegration_site');
-        
+
         if (!empty($data)) {
             $model = $this->collection->getNewEmptyItem();
             $model->setData($data);
             $this->loadedData[$model->getId()] = $model->getData();
             $this->dataPersistor->clear('mooore_wordpressintegration_site');
         }
-        
+
         return $this->loadedData;
     }
 }

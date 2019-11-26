@@ -1,37 +1,41 @@
 <?php
 
+declare(strict_types=1);
 
 namespace Mooore\WordpressIntegration\Model;
 
 use Magento\Framework\Api\DataObjectHelper;
+use Magento\Framework\Model\AbstractModel;
+use Magento\Framework\Model\Context;
+use Magento\Framework\Registry;
 use Mooore\WordpressIntegration\Api\Data\SiteInterface;
 use Mooore\WordpressIntegration\Api\Data\SiteInterfaceFactory;
+use Mooore\WordpressIntegration\Model\ResourceModel\Site\Collection;
 
-class Site extends \Magento\Framework\Model\AbstractModel
+class Site extends AbstractModel
 {
+    private $siteDataFactory;
 
-    protected $siteDataFactory;
-
-    protected $dataObjectHelper;
+    private $dataObjectHelper;
 
     protected $_eventPrefix = 'mooore_wordpressintegration_site';
 
     /**
-     * @param \Magento\Framework\Model\Context $context
-     * @param \Magento\Framework\Registry $registry
+     * @param Context $context
+     * @param Registry $registry
      * @param SiteInterfaceFactory $siteDataFactory
      * @param DataObjectHelper $dataObjectHelper
-     * @param \Mooore\WordpressIntegration\Model\ResourceModel\Site $resource
-     * @param \Mooore\WordpressIntegration\Model\ResourceModel\Site\Collection $resourceCollection
+     * @param ResourceModel\Site $resource
+     * @param Collection $resourceCollection
      * @param array $data
      */
     public function __construct(
-        \Magento\Framework\Model\Context $context,
-        \Magento\Framework\Registry $registry,
+        Context $context,
+        Registry $registry,
         SiteInterfaceFactory $siteDataFactory,
         DataObjectHelper $dataObjectHelper,
-        \Mooore\WordpressIntegration\Model\ResourceModel\Site $resource,
-        \Mooore\WordpressIntegration\Model\ResourceModel\Site\Collection $resourceCollection,
+        ResourceModel\Site $resource,
+        Collection $resourceCollection,
         array $data = []
     ) {
         $this->siteDataFactory = $siteDataFactory;
@@ -46,14 +50,14 @@ class Site extends \Magento\Framework\Model\AbstractModel
     public function getDataModel()
     {
         $siteData = $this->getData();
-        
+
         $siteDataObject = $this->siteDataFactory->create();
         $this->dataObjectHelper->populateWithArray(
             $siteDataObject,
             $siteData,
             SiteInterface::class
         );
-        
+
         return $siteDataObject;
     }
 }

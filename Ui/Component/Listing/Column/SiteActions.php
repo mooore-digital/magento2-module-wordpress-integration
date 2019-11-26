@@ -1,27 +1,32 @@
 <?php
 
+declare(strict_types=1);
 
 namespace Mooore\WordpressIntegration\Ui\Component\Listing\Column;
 
-class SiteActions extends \Magento\Ui\Component\Listing\Columns\Column
-{
+use Magento\Framework\UrlInterface;
+use Magento\Framework\View\Element\UiComponent\ContextInterface;
+use Magento\Framework\View\Element\UiComponentFactory;
+use Magento\Ui\Component\Listing\Columns\Column;
 
-    const URL_PATH_DETAILS = 'mooore_wordpressintegration/site/details';
+class SiteActions extends Column
+{
     const URL_PATH_EDIT = 'mooore_wordpressintegration/site/edit';
     const URL_PATH_DELETE = 'mooore_wordpressintegration/site/delete';
-    protected $urlBuilder;
+
+    private $urlBuilder;
 
     /**
-     * @param \Magento\Framework\View\Element\UiComponent\ContextInterface $context
-     * @param \Magento\Framework\View\Element\UiComponentFactory $uiComponentFactory
-     * @param \Magento\Framework\UrlInterface $urlBuilder
+     * @param ContextInterface $context
+     * @param UiComponentFactory $uiComponentFactory
+     * @param UrlInterface $urlBuilder
      * @param array $components
      * @param array $data
      */
     public function __construct(
-        \Magento\Framework\View\Element\UiComponent\ContextInterface $context,
-        \Magento\Framework\View\Element\UiComponentFactory $uiComponentFactory,
-        \Magento\Framework\UrlInterface $urlBuilder,
+        ContextInterface $context,
+        UiComponentFactory $uiComponentFactory,
+        UrlInterface $urlBuilder,
         array $components = [],
         array $data = []
     ) {
@@ -37,37 +42,41 @@ class SiteActions extends \Magento\Ui\Component\Listing\Columns\Column
      */
     public function prepareDataSource(array $dataSource)
     {
-        if (isset($dataSource['data']['items'])) {
-            foreach ($dataSource['data']['items'] as & $item) {
-                if (isset($item['site_id'])) {
-                    $item[$this->getData('name')] = [
-                        'edit' => [
-                            'href' => $this->urlBuilder->getUrl(
-                                static::URL_PATH_EDIT,
-                                [
-                                    'site_id' => $item['site_id']
-                                ]
-                            ),
-                            'label' => __('Edit')
-                        ],
-                        'delete' => [
-                            'href' => $this->urlBuilder->getUrl(
-                                static::URL_PATH_DELETE,
-                                [
-                                    'site_id' => $item['site_id']
-                                ]
-                            ),
-                            'label' => __('Delete'),
-                            'confirm' => [
-                                'title' => __('Delete "${ $.$data.title }"'),
-                                'message' => __('Are you sure you wan\'t to delete a "${ $.$data.title }" record?')
-                            ]
-                        ]
-                    ];
-                }
-            }
+        if (!isset($dataSource['data']['items'])) {
+            return $dataSource;
         }
-        
+
+        foreach ($dataSource['data']['items'] as &$item) {
+            if (!isset($item['site_id'])) {
+                continue;
+            }
+
+            $item[$this->getData('name')] = [
+                'edit' => [
+                    'href' => $this->urlBuilder->getUrl(
+                        static::URL_PATH_EDIT,
+                        [
+                            'site_id' => $item['site_id'],
+                        ]
+                    ),
+                    'label' => __('Edit'),
+                ],
+                'delete' => [
+                    'href' => $this->urlBuilder->getUrl(
+                        static::URL_PATH_DELETE,
+                        [
+                            'site_id' => $item['site_id'],
+                        ]
+                    ),
+                    'label' => __('Delete'),
+                    'confirm' => [
+                        'title' => __('Delete "${ $.$data.title }"'),
+                        'message' => __('Are you sure you want to delete a "${ $.$data.title }" record?'),
+                    ],
+                ],
+            ];
+        }
+
         return $dataSource;
     }
 }

@@ -1,42 +1,45 @@
 <?php
 
+declare(strict_types=1);
 
 namespace Mooore\WordpressIntegration\Controller\Adminhtml\Site;
 
-class Delete extends \Mooore\WordpressIntegration\Controller\Adminhtml\Site
-{
+use Exception;
+use Magento\Backend\Model\View\Result\Redirect;
+use Magento\Framework\Controller\ResultInterface;
+use Mooore\WordpressIntegration\Controller\Adminhtml\Site;
 
+class Delete extends Site
+{
     /**
      * Delete action
      *
-     * @return \Magento\Framework\Controller\ResultInterface
+     * @return ResultInterface
      */
     public function execute()
     {
-        /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
+        /** @var Redirect $resultRedirect */
         $resultRedirect = $this->resultRedirectFactory->create();
-        // check if we know what should be deleted
+
         $id = $this->getRequest()->getParam('site_id');
-        if ($id) {
-            try {
-                // init model and delete
-                $model = $this->_objectManager->create(\Mooore\WordpressIntegration\Model\Site::class);
-                $model->load($id);
-                $model->delete();
-                // display success message
-                $this->messageManager->addSuccessMessage(__('You deleted the Site.'));
-                // go to grid
-                return $resultRedirect->setPath('*/*/');
-            } catch (\Exception $e) {
-                // display error message
-                $this->messageManager->addErrorMessage($e->getMessage());
-                // go back to edit form
-                return $resultRedirect->setPath('*/*/edit', ['site_id' => $id]);
-            }
+        if (empty($id)) {
+            $this->messageManager->addErrorMessage(__('We can\'t find a Site to delete.'));
+
+            return $resultRedirect->setPath('*/*/');
         }
-        // display error message
-        $this->messageManager->addErrorMessage(__('We can\'t find a Site to delete.'));
-        // go to grid
-        return $resultRedirect->setPath('*/*/');
+
+        try {
+            $model = $this->_objectManager->create(\Mooore\WordpressIntegration\Model\Site::class);
+            $model->load($id);
+            $model->delete();
+
+            $this->messageManager->addSuccessMessage(__('You deleted the Site.'));
+
+            return $resultRedirect->setPath('*/*/');
+        } catch (Exception $e) {
+            $this->messageManager->addErrorMessage($e->getMessage());
+
+            return $resultRedirect->setPath('*/*/edit', ['site_id' => $id]);
+        }
     }
 }

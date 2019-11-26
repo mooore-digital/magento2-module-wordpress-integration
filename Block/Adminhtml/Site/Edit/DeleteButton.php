@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 
 namespace Mooore\WordpressIntegration\Block\Adminhtml\Site\Edit;
 
@@ -7,7 +8,6 @@ use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 
 class DeleteButton extends GenericButton implements ButtonProviderInterface
 {
-
     /**
      * @return array
      */

@@ -1,13 +1,15 @@
 <?php
 
+declare(strict_types=1);
 
 namespace Mooore\WordpressIntegration\Model\Data;
 
+use Magento\Framework\Api\AbstractExtensibleObject;
+use Mooore\WordpressIntegration\Api\Data\SiteExtensionInterface;
 use Mooore\WordpressIntegration\Api\Data\SiteInterface;
 
-class Site extends \Magento\Framework\Api\AbstractExtensibleObject implements SiteInterface
+class Site extends AbstractExtensibleObject implements SiteInterface
 {
-
     /**
      * Get site_id
      * @return string|null
@@ -20,7 +22,7 @@ class Site extends \Magento\Framework\Api\AbstractExtensibleObject implements Si
     /**
      * Set site_id
      * @param string $siteId
-     * @return \Mooore\WordpressIntegration\Api\Data\SiteInterface
+     * @return SiteInterface
      */
     public function setSiteId($siteId)
     {
@@ -39,7 +41,7 @@ class Site extends \Magento\Framework\Api\AbstractExtensibleObject implements Si
     /**
      * Set name
      * @param string $name
-     * @return \Mooore\WordpressIntegration\Api\Data\SiteInterface
+     * @return SiteInterface
      */
     public function setName($name)
     {
@@ -48,7 +50,7 @@ class Site extends \Magento\Framework\Api\AbstractExtensibleObject implements Si
 
     /**
      * Retrieve existing extension attributes object or create a new one.
-     * @return \Mooore\WordpressIntegration\Api\Data\SiteExtensionInterface|null
+     * @return SiteExtensionInterface|null
      */
     public function getExtensionAttributes()
     {
@@ -57,12 +59,11 @@ class Site extends \Magento\Framework\Api\AbstractExtensibleObject implements Si
 
     /**
      * Set an extension attributes object.
-     * @param \Mooore\WordpressIntegration\Api\Data\SiteExtensionInterface $extensionAttributes
+     * @param SiteExtensionInterface $extensionAttributes
      * @return $this
      */
-    public function setExtensionAttributes(
-        \Mooore\WordpressIntegration\Api\Data\SiteExtensionInterface $extensionAttributes
-    ) {
+    public function setExtensionAttributes(SiteExtensionInterface $extensionAttributes)
+    {
         return $this->_setExtensionAttributes($extensionAttributes);
     }
 
@@ -78,7 +79,7 @@ class Site extends \Magento\Framework\Api\AbstractExtensibleObject implements Si
     /**
      * Set baseurl
      * @param string $baseurl
-     * @return \Mooore\WordpressIntegration\Api\Data\SiteInterface
+     * @return SiteInterface
      */
     public function setBaseurl($baseurl)
     {
@@ -97,7 +98,7 @@ class Site extends \Magento\Framework\Api\AbstractExtensibleObject implements Si
     /**
      * Set enabled
      * @param string $enabled
-     * @return \Mooore\WordpressIntegration\Api\Data\SiteInterface
+     * @return SiteInterface
      */
     public function setEnabled($enabled)
     {

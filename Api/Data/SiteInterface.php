@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 
 namespace Mooore\WordpressIntegration\Api\Data;
 
@@ -22,7 +23,7 @@ interface SiteInterface extends ExtensibleDataInterface
     /**
      * Set site_id
      * @param string $siteId
-     * @return \Mooore\WordpressIntegration\Api\Data\SiteInterface
+     * @return SiteInterface
      */
     public function setSiteId($siteId);
 
@@ -35,7 +36,7 @@ interface SiteInterface extends ExtensibleDataInterface
     /**
      * Set name
      * @param string $name
-     * @return \Mooore\WordpressIntegration\Api\Data\SiteInterface
+     * @return SiteInterface
      */
     public function setName($name);
 
@@ -61,7 +62,7 @@ interface SiteInterface extends ExtensibleDataInterface
     /**
      * Set baseurl
      * @param string $baseurl
-     * @return \Mooore\WordpressIntegration\Api\Data\SiteInterface
+     * @return SiteInterface
      */
     public function setBaseurl($baseurl);
 
@@ -74,7 +75,7 @@ interface SiteInterface extends ExtensibleDataInterface
     /**
      * Set enabled
      * @param string $enabled
-     * @return \Mooore\WordpressIntegration\Api\Data\SiteInterface
+     * @return SiteInterface
      */
     public function setEnabled($enabled);
 }

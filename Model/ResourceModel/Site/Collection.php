@@ -1,11 +1,14 @@
 <?php
 
+declare(strict_types=1);
 
 namespace Mooore\WordpressIntegration\Model\ResourceModel\Site;
 
-class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
-{
+use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
+use Mooore\WordpressIntegration\Model\ResourceModel\Site;
 
+class Collection extends AbstractCollection
+{
     /**
      * Define resource model
      *
@@ -15,7 +18,7 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
     {
         $this->_init(
             \Mooore\WordpressIntegration\Model\Site::class,
-            \Mooore\WordpressIntegration\Model\ResourceModel\Site::class
+            Site::class
         );
     }
 }

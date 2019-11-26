@@ -1,19 +1,28 @@
 <?xml version="1.0" ?>
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-	<preference for="Mooore\WordpressIntegration\Api\SiteRepositoryInterface" type="Mooore\WordpressIntegration\Model\SiteRepository"/>
-	<preference for="Mooore\WordpressIntegration\Api\Data\SiteInterface" type="Mooore\WordpressIntegration\Model\Data\Site"/>
-	<preference for="Mooore\WordpressIntegration\Api\Data\SiteSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
-	<virtualType name="Mooore\WordpressIntegration\Model\ResourceModel\Site\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
-		<arguments>
-			<argument name="mainTable" xsi:type="string">mooore_wordpressintegration_site</argument>
-			<argument name="resourceModel" xsi:type="string">Mooore\WordpressIntegration\Model\ResourceModel\Site\Collection</argument>
-		</arguments>
-	</virtualType>
-	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
-		<arguments>
-			<argument name="collections" xsi:type="array">
-				<item name="mooore_wordpressintegration_site_listing_data_source" xsi:type="string">Mooore\WordpressIntegration\Model\ResourceModel\Site\Grid\Collection</item>
-			</argument>
-		</arguments>
-	</type>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Mooore\WordpressIntegration\Api\SiteRepositoryInterface"
+                type="Mooore\WordpressIntegration\Model\SiteRepository"/>
+    <preference for="Mooore\WordpressIntegration\Api\Data\SiteInterface"
+                type="Mooore\WordpressIntegration\Model\Data\Site"/>
+    <preference for="Mooore\WordpressIntegration\Api\Data\SiteSearchResultsInterface"
+                type="Magento\Framework\Api\SearchResults"/>
+    <virtualType name="Mooore\WordpressIntegration\Model\ResourceModel\Site\Grid\Collection"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">mooore_wordpressintegration_site</argument>
+            <argument name="resourceModel"
+                      xsi:type="string">Mooore\WordpressIntegration\Model\ResourceModel\Site\Collection
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="mooore_wordpressintegration_site_listing_data_source"
+                      xsi:type="string">Mooore\WordpressIntegration\Model\ResourceModel\Site\Grid\Collection
+                </item>
+            </argument>
+        </arguments>
+    </type>
 </config>

@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
 
 namespace Mooore\WordpressIntegration\Model\ResourceModel;
 
-class Site extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
-{
+use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 
+class Site extends AbstractDb
+{
     /**
      * Define resource model
      *

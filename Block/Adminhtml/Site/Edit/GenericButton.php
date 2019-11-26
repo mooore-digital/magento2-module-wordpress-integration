@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 
 namespace Mooore\WordpressIntegration\Block\Adminhtml\Site\Edit;
 
@@ -7,11 +8,10 @@ use Magento\Backend\Block\Widget\Context;
 
 abstract class GenericButton
 {
-
     protected $context;
 
     /**
-     * @param \Magento\Backend\Block\Widget\Context $context
+     * @param Context $context
      */
     public function __construct(Context $context)
     {
@@ -31,8 +31,8 @@ abstract class GenericButton
     /**
      * Generate url by route and parameters
      *
-     * @param   string $route
-     * @param   array $params
+     * @param string $route
+     * @param array $params
      * @return  string
      */
     public function getUrl($route = '', $params = [])

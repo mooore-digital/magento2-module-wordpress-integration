@@ -1,47 +1,73 @@
 <?php
 
+declare(strict_types=1);
 
 namespace Mooore\WordpressIntegration\Model;
 
+use Exception;
+use Magento\Framework\Api\DataObjectHelper;
+use Magento\Framework\Api\ExtensibleDataObjectConverter;
+use Magento\Framework\Api\ExtensionAttribute\JoinProcessorInterface;
+use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface;
+use Magento\Framework\Api\SearchCriteriaInterface;
+use Magento\Framework\Exception\CouldNotDeleteException;
+use Magento\Framework\Exception\CouldNotSaveException;
+use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\Reflection\DataObjectProcessor;
+use Magento\Store\Model\StoreManagerInterface;
+use Mooore\WordpressIntegration\Api\Data\SiteInterface;
+use Mooore\WordpressIntegration\Api\Data\SiteInterfaceFactory;
+use Mooore\WordpressIntegration\Api\Data\SiteSearchResultsInterfaceFactory;
+use Mooore\WordpressIntegration\Api\SiteRepositoryInterface;
 use Mooore\WordpressIntegration\Model\ResourceModel\Site as ResourceSite;
 use Mooore\WordpressIntegration\Model\ResourceModel\Site\CollectionFactory as SiteCollectionFactory;
-use Magento\Framework\Api\ExtensionAttribute\JoinProcessorInterface;
-use Magento\Framework\Exception\CouldNotSaveException;
-use Mooore\WordpressIntegration\Api\SiteRepositoryInterface;
-use Magento\Store\Model\StoreManagerInterface;
-use Magento\Framework\Api\DataObjectHelper;
-use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface;
-use Magento\Framework\Exception\CouldNotDeleteException;
-use Magento\Framework\Reflection\DataObjectProcessor;
-use Magento\Framework\Api\ExtensibleDataObjectConverter;
-use Mooore\WordpressIntegration\Api\Data\SiteSearchResultsInterfaceFactory;
-use Mooore\WordpressIntegration\Api\Data\SiteInterfaceFactory;
-use Magento\Framework\Exception\NoSuchEntityException;
 
 class SiteRepository implements SiteRepositoryInterface
 {
-
-    protected $dataObjectHelper;
-
+    /**
+     * @var DataObjectHelper
+     */
+    private $dataObjectHelper;
+    /**
+     * @var StoreManagerInterface
+     */
     private $storeManager;
-
-    protected $searchResultsFactory;
-
-    protected $dataObjectProcessor;
-
-    protected $extensionAttributesJoinProcessor;
-
+    /**
+     * @var SiteSearchResultsInterfaceFactory
+     */
+    private $searchResultsFactory;
+    /**
+     * @var DataObjectProcessor
+     */
+    private $dataObjectProcessor;
+    /**
+     * @var JoinProcessorInterface
+     */
+    private $extensionAttributesJoinProcessor;
+    /**
+     * @var CollectionProcessorInterface
+     */
     private $collectionProcessor;
-
-    protected $extensibleDataObjectConverter;
-    protected $resource;
-
-    protected $siteFactory;
-
-    protected $siteCollectionFactory;
-
-    protected $dataSiteFactory;
-
+    /**
+     * @var ExtensibleDataObjectConverter
+     */
+    private $extensibleDataObjectConverter;
+    /**
+     * @var ResourceSite
+     */
+    private $resource;
+    /**
+     * @var SiteFactory
+     */
+    private $siteFactory;
+    /**
+     * @var SiteCollectionFactory
+     */
+    private $siteCollectionFactory;
+    /**
+     * @var SiteInterfaceFactory
+     */
+    private $dataSiteFactory;
 
     /**
      * @param ResourceSite $resource
@@ -85,25 +111,24 @@ class SiteRepository implements SiteRepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function save(
-        \Mooore\WordpressIntegration\Api\Data\SiteInterface $site
-    ) {
+    public function save(SiteInterface $site)
+    {
         /* if (empty($site->getStoreId())) {
             $storeId = $this->storeManager->getStore()->getId();
             $site->setStoreId($storeId);
         } */
-        
+
         $siteData = $this->extensibleDataObjectConverter->toNestedArray(
             $site,
             [],
-            \Mooore\WordpressIntegration\Api\Data\SiteInterface::class
+            SiteInterface::class
         );
-        
+
         $siteModel = $this->siteFactory->create()->setData($siteData);
-        
+
         try {
             $this->resource->save($siteModel);
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             throw new CouldNotSaveException(__(
                 'Could not save the site: %1',
                 $exception->getMessage()
@@ -111,6 +136,62 @@ class SiteRepository implements SiteRepositoryInterface
         }
 
         return $siteModel->getDataModel();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getList(SearchCriteriaInterface $criteria)
+    {
+        $collection = $this->siteCollectionFactory->create();
+
+        $this->extensionAttributesJoinProcessor->process(
+            $collection,
+            SiteInterface::class
+        );
+
+        $this->collectionProcessor->process($criteria, $collection);
+
+        $searchResults = $this->searchResultsFactory->create();
+        $searchResults->setSearchCriteria($criteria);
+
+        $items = [];
+        foreach ($collection as $model) {
+            $items[] = $model->getDataModel();
+        }
+
+        $searchResults->setItems($items);
+        $searchResults->setTotalCount($collection->getSize());
+
+        return $searchResults;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function deleteById($siteId)
+    {
+        return $this->delete($this->get($siteId));
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function delete(
+        SiteInterface $site
+    ) {
+        try {
+            $siteModel = $this->siteFactory->create();
+            $this->resource->load($siteModel, $site->getSiteId());
+            $this->resource->delete($siteModel);
+        } catch (Exception $exception) {
+            throw new CouldNotDeleteException(__(
+                'Could not delete the Site: %1',
+                $exception->getMessage()
+            ));
+        }
+
+        return true;
     }
 
     /**
@@ -125,60 +206,5 @@ class SiteRepository implements SiteRepositoryInterface
         }
 
         return $site->getDataModel();
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getList(
-        \Magento\Framework\Api\SearchCriteriaInterface $criteria
-    ) {
-        $collection = $this->siteCollectionFactory->create();
-        
-        $this->extensionAttributesJoinProcessor->process(
-            $collection,
-            \Mooore\WordpressIntegration\Api\Data\SiteInterface::class
-        );
-        
-        $this->collectionProcessor->process($criteria, $collection);
-        
-        $searchResults = $this->searchResultsFactory->create();
-        $searchResults->setSearchCriteria($criteria);
-        
-        $items = [];
-        foreach ($collection as $model) {
-            $items[] = $model->getDataModel();
-        }
-        
-        $searchResults->setItems($items);
-        $searchResults->setTotalCount($collection->getSize());
-        return $searchResults;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function delete(
-        \Mooore\WordpressIntegration\Api\Data\SiteInterface $site
-    ) {
-        try {
-            $siteModel = $this->siteFactory->create();
-            $this->resource->load($siteModel, $site->getSiteId());
-            $this->resource->delete($siteModel);
-        } catch (\Exception $exception) {
-            throw new CouldNotDeleteException(__(
-                'Could not delete the Site: %1',
-                $exception->getMessage()
-            ));
-        }
-        return true;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function deleteById($siteId)
-    {
-        return $this->delete($this->get($siteId));
     }
 }
