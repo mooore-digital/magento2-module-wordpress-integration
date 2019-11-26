@@ -7,7 +7,6 @@ namespace Mooore\WordpressIntegration\Api;
 use Magento\Framework\Api\SearchCriteriaInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
-use Magento\Tests\NamingConvention\true\bool;
 use Mooore\WordpressIntegration\Api\Data\SiteInterface;
 use Mooore\WordpressIntegration\Api\Data\SiteSearchResultsInterface;
 

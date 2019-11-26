@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Mooore\WordpressIntegration\Api\Data;
 
 use Magento\Framework\Api\ExtensibleDataInterface;
-use Magento\Tests\NamingConvention\true\string;
 use Mooore\WordpressIntegration\Api\Data\SiteExtensionInterface;
 
 interface SiteInterface extends ExtensibleDataInterface

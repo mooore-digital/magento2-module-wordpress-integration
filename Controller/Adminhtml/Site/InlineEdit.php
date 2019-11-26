@@ -51,7 +51,9 @@ class InlineEdit extends Action
                     /** @var Site $model */
                     $model = $this->_objectManager->create(Site::class)->load($siteId);
                     try {
+                        // phpcs:disable
                         $model->setData(array_merge($model->getData(), $postItems[$siteId]));
+                        // phpcs:enable
                         $model->save();
                     } catch (Exception $e) {
                         $messages[] = "[Site ID: {$siteId}]  {$e->getMessage()}";
