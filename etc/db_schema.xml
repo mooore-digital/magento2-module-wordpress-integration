@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+	<table comment="mooore_wordpressintegration_site Table" engine="innodb" name="mooore_wordpressintegration_site" resource="default">
+		<column comment="Entity Id" identity="true" name="site_id" nullable="false" padding="6" unsigned="false" xsi:type="smallint"/>
+		<constraint referenceId="PRIMARY" xsi:type="primary">
+			<column name="site_id"/>
+		</constraint>
+		<column length="255" name="name" nullable="true" xsi:type="varchar"/>
+		<column length="255" name="baseurl" nullable="true" xsi:type="varchar"/>
+		<column default="1" name="enabled" nullable="false" xsi:type="boolean"/>
+	</table>
+</schema>

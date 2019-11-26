@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+		<add id="Mooore::top_level" module="Mooore_WordpressIntegration" resource="Magento_Backend::content" sortOrder="9999" title="Mooore"/>
+		<add action="mooore_wordpressintegration/site/index" id="Mooore_WordpressIntegration::mooore_wordpressintegration_site" module="Mooore_WordpressIntegration" parent="Mooore::top_level" resource="Magento_Backend::content" sortOrder="9999" title="Site"/>
+	</menu>
+</config>
