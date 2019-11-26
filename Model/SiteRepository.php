@@ -137,7 +137,7 @@ class SiteRepository implements SiteRepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function getList(SearchCriteriaInterface $criteria): SiteSearchResultsInterface
+    public function getList(SearchCriteriaInterface $criteria)
     {
         $collection = $this->siteCollectionFactory->create();
 
