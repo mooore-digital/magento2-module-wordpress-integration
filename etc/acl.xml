@@ -4,11 +4,15 @@
     <acl>
         <resources>
             <resource id="Magento_Backend::admin">
-                <resource id="Mooore_WordpressIntegration::Site" sortOrder="10" title="Site">
-                    <resource id="Mooore_WordpressIntegration::Site_save" sortOrder="10" title="Save Site"/>
-                    <resource id="Mooore_WordpressIntegration::Site_delete" sortOrder="20" title="Delete Site"/>
-                    <resource id="Mooore_WordpressIntegration::Site_update" sortOrder="30" title="Update Site"/>
-                    <resource id="Mooore_WordpressIntegration::Site_view" sortOrder="40" title="View Site"/>
+                <resource id="Magento_Backend::content">
+                    <resource id="Magento_Backend::content_elements">
+                        <resource id="Mooore_WordpressIntegration::Site" sortOrder="10" title="Site">
+                            <resource id="Mooore_WordpressIntegration::Site_save" sortOrder="10" title="Save Site"/>
+                            <resource id="Mooore_WordpressIntegration::Site_delete" sortOrder="20" title="Delete Site"/>
+                            <resource id="Mooore_WordpressIntegration::Site_update" sortOrder="30" title="Update Site"/>
+                            <resource id="Mooore_WordpressIntegration::Site_view" sortOrder="40" title="View Site"/>
+                        </resource>
+                    </resource>
                 </resource>
             </resource>
         </resources>
