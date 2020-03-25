@@ -10,7 +10,11 @@
     }
   ],
   "minimum-stability": "dev",
-  "require": {},
+  "require": {
+      "magento/framework": "102.*",
+      "magento/module-backend": "101.*",
+      "magento/module-ui": "101.*"
+  },
   "autoload": {
     "psr-4": {
       "Mooore\\WordpressIntegration\\": ""
