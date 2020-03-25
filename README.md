@@ -1,5 +1,7 @@
 # Mooore WordpressIntegration
 
+[![Packagist Version](https://img.shields.io/packagist/v/mooore/magento2-module-wordpress-integration)](https://packagist.org/packages/mooore/magento2-module-wordpress-integration)
+
 > :warning: This module is still in it's alpha phase.
 > And every release might break. So always test before updating.
 
