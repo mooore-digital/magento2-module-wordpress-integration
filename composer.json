@@ -2,7 +2,7 @@
   "name": "mooore/magento2-module-wordpress-integration",
   "description": "",
   "type": "magento2-module",
-  "license": "proprietary",
+  "license": "MIT",
   "authors": [
     {
       "email": "info@mooore.nl",
