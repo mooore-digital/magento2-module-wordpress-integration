@@ -2,12 +2,9 @@
 
 [![Packagist Version](https://img.shields.io/packagist/v/mooore/magento2-module-wordpress-integration)](https://packagist.org/packages/mooore/magento2-module-wordpress-integration)
 
-> :warning: This module is still in it's alpha phase.
-> And every release might break. So always test before updating.
+> :warning: This module is still in its alpha phase.
 
-Base module for Magento 2 Wordpress Integration.
-Currently only used for Mooore Wordpress Integration Cms.
-So see the [Mooore WordpressIntegrationCms module](https://github.com/mooore-digital/magento2-module-wordpress-integration-cms) for intergration in to Magento 2.
+Base module for Magento 2 Wordpress Integration, currently only used for module [Mooore WordpressIntegrationCms module](https://github.com/mooore-digital/magento2-module-wordpress-integration-cms).
 
 ## Installation
 
