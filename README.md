@@ -4,7 +4,7 @@
 
 > :warning: This module is still in its alpha phase.
 
-Base module for Magento 2 Wordpress Integration, currently only used for module [Mooore WordpressIntegrationCms module](https://github.com/mooore-digital/magento2-module-wordpress-integration-cms).
+Base module for Magento 2 Wordpress Integration, currently only used for module [Mooore_WordpressIntegrationCms](https://github.com/mooore-digital/magento2-module-wordpress-integration-cms).
 
 ## Installation
 
