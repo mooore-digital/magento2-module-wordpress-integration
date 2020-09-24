@@ -16,8 +16,8 @@
     }
   ],
   "require": {
-      "magento/framework": "102.*",
-      "magento/module-backend": "101.*",
+      "magento/framework": "102.*|103.0.*",
+      "magento/module-backend": "101.*|102.*",
       "magento/module-ui": "101.*"
   },
   "autoload": {
