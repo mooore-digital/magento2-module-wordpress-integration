@@ -23,7 +23,7 @@ class Delete extends Site
 
         $id = $this->getRequest()->getParam('site_id');
         if (empty($id)) {
-            $this->messageManager->addErrorMessage(__('We can\'t find a Site to delete.'));
+            $this->messageManager->addErrorMessage(__("We can't find a Site to delete."));
 
             return $resultRedirect->setPath('*/*/');
         }
