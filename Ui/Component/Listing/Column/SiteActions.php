@@ -70,8 +70,8 @@ class SiteActions extends Column
                     ),
                     'label' => __('Delete'),
                     'confirm' => [
-                        'title' => __('Delete "${ $.$data.title }"'),
-                        'message' => __('Are you sure you want to delete a "${ $.$data.title }" record?'),
+                        'title' => __('Delete %1', $item['name']),
+                        'message' => __('Are you sure you want to delete a %1 record?', $item['name']),
                     ],
                 ],
             ];
