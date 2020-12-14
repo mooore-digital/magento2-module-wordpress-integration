@@ -140,6 +140,6 @@ class Site extends AbstractExtensibleObject implements SiteInterface
      */
     public function setApiPassword(string $apiPassword)
     {
-        return $this->setData(self::API_PASSWORD, $apiPassword));
+        return $this->setData(self::API_PASSWORD, $apiPassword);
     }
 }
