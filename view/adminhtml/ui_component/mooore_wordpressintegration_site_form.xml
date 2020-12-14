@@ -72,7 +72,37 @@
                 </validation>
             </settings>
         </field>
-        <field formElement="checkbox" name="enabled" sortOrder="30">
+        <field formElement="input" name="api_username" sortOrder="30">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">Site</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Api Username</label>
+                <dataScope>api_username</dataScope>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">false</rule>
+                </validation>
+            </settings>
+        </field>
+        <field formElement="input" name="api_usernams" sortOrder="40">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">Site</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>password</dataType>
+                <label translate="true">Api Password</label>
+                <dataScope>api_password</dataScope>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">false</rule>
+                </validation>
+            </settings>
+        </field>
+        <field formElement="checkbox" name="enabled" sortOrder="50">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="source" xsi:type="string">Site</item>
