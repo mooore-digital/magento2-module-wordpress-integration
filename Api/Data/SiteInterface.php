@@ -85,25 +85,25 @@ interface SiteInterface extends ExtensibleDataInterface
      * Get api_username
      * @return string
      */
-    public function getApiUsername(): string;
+    public function getApiUsername(): ?string;
 
     /**
      * Set api_username
      * @param string $apiUsername
      * @return SiteInterface
      */
-    public function setApiUsername(string $apiUsername);
+    public function setApiUsername(?string $apiUsername);
 
     /**
      * Get api_password
      * @return string
      */
-    public function getApiPassword(): string;
+    public function getApiPassword(): ?string;
 
     /**
      * Set api_password
      * @param string $apiPassword
      * @return SiteInterface
      */
-    public function setApiPassword(string $apiPassword);
+    public function setApiPassword(?string $apiPassword);
 }

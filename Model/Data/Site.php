@@ -109,7 +109,7 @@ class Site extends AbstractExtensibleObject implements SiteInterface
      * Get api_username
      * @return string
      */
-    public function getApiUsername(): string
+    public function getApiUsername(): ?string
     {
         return $this->_get(self::API_USERNAME);
     }
@@ -119,7 +119,7 @@ class Site extends AbstractExtensibleObject implements SiteInterface
      * @param string $apiUsername
      * @return SiteInterface
      */
-    public function setApiUsername(string $apiUsername)
+    public function setApiUsername(?string $apiUsername)
     {
         return $this->setData(self::API_USERNAME, $apiUsername);
     }
@@ -128,7 +128,7 @@ class Site extends AbstractExtensibleObject implements SiteInterface
      * Get api_password
      * @return string
      */
-    public function getApiPassword(): string
+    public function getApiPassword(): ?string
     {
         return $this->_get(self::API_PASSWORD);
     }
@@ -138,7 +138,7 @@ class Site extends AbstractExtensibleObject implements SiteInterface
      * @param string $apiPassword
      * @return SiteInterface
      */
-    public function setApiPassword(string $apiPassword)
+    public function setApiPassword(?string $apiPassword)
     {
         return $this->setData(self::API_PASSWORD, $apiPassword);
     }
