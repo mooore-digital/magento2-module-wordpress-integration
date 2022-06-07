@@ -14,3 +14,7 @@ Base module for Magento 2 Wordpress Integration, currently only used for module 
 composer require mooore/magento2-module-wordpress-integration
 bin/magento setup:upgrade
 ```
+
+### Use magento store as image URLs
+
+Create a symlink from your CMS environment's `wp-content` folder to `pub/media/wp-content` , and enable the "Replace Media URLs" option in a Site Config
