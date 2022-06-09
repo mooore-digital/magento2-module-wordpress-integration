@@ -142,4 +142,23 @@ class Site extends AbstractExtensibleObject implements SiteInterface
     {
         return $this->setData(self::API_PASSWORD, $apiPassword);
     }
+
+    /**
+     * Get replace_media_urls
+     * @return bool|null
+     */
+    public function getReplaceMediaUrls(): bool
+    {
+        return (bool) $this->_get(self::REPLACE_MEDIA_URLS);
+    }
+
+    /**
+     * Set replace_media_urls
+     * @param bool $replaceMediaUrls
+     * @return SiteInterface
+     */
+    public function setReplaceMediaUrls($replaceMediaUrls)
+    {
+        return $this->setData(self::REPLACE_MEDIA_URLS, $replaceMediaUrls);
+    }
 }
