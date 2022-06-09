@@ -102,7 +102,7 @@
                 </validation>
             </settings>
         </field>
-        <field formElement="checkbox" name="enabled" sortOrder="50">
+        <field formElement="checkbox" name="enabled" sortOrder="9">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="source" xsi:type="string">Site</item>
@@ -128,6 +128,104 @@
                     </settings>
                 </checkbox>
             </formElements>
+        </field>
+    </fieldset>
+    <fieldset name="blog">
+        <settings>
+            <label>Blog</label>
+        </settings>
+        <field formElement="checkbox" name="enable_blog" sortOrder="10">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">Site</item>
+                    <item name="default" xsi:type="number">0</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>boolean</dataType>
+                <label translate="true">Enable Blog</label>
+                <dataScope>enable_blog</dataScope>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">false</rule>
+                </validation>
+                <switcherConfig>
+                    <enabled>true</enabled>
+                    <rules>
+                        <rule name="0">
+                            <value>0</value>
+                            <actions>
+                                <action name="0">
+                                    <target>mooore_wordpressintegration_site_form.mooore_wordpressintegration_site_form.blog.blog_prefix</target>
+                                    <callback>hide</callback>
+                                </action>
+                                <action name="1">
+                                    <target>mooore_wordpressintegration_site_form.mooore_wordpressintegration_site_form.blog.blog_stores</target>
+                                    <callback>hide</callback>
+                                </action>
+                            </actions>
+                        </rule>
+                        <rule name="1">
+                            <value>1</value>
+                            <actions>
+                                <action name="0">
+                                    <target>mooore_wordpressintegration_site_form.mooore_wordpressintegration_site_form.blog.blog_prefix</target>
+                                    <callback>show</callback>
+                                </action>
+                                <action name="1">
+                                    <target>mooore_wordpressintegration_site_form.mooore_wordpressintegration_site_form.blog.blog_stores</target>
+                                    <callback>show</callback>
+                                </action>
+                            </actions>
+                        </rule>
+                    </rules>
+                </switcherConfig>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <field formElement="input" name="blog_prefix" sortOrder="20">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">Site</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Blog Route Prefix</label>
+                <dataScope>blog_prefix</dataScope>
+                <notice translate="true">Allows you to set a default blog prefix, for example "/blog", leave this field empty to disable this feature.</notice>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">false</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="blog_stores" sortOrder="30">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Magento\Cms\Ui\Component\Listing\Column\Cms\Options</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">int</item>
+                    <item name="label" xsi:type="string" translate="true">Store View</item>
+                    <item name="formElement" xsi:type="string">multiselect</item>
+                    <item name="source" xsi:type="string">page</item>
+                    <item name="dataScope" xsi:type="string">blog_stores</item>
+                    <item name="default" xsi:type="string">0</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+            <settings>
+                <notice translate="true">Select which stores you want this blog site to be enabled.</notice>
+            </settings>
         </field>
     </fieldset>
 </form>
