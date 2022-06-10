@@ -102,6 +102,34 @@
                 </validation>
             </settings>
         </field>
+        <field formElement="checkbox" name="replace_media_urls" sortOrder="50">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">Site</item>
+                    <item name="default" xsi:type="number">0</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>boolean</dataType>
+                <label translate="true">Replace Media URLs</label>
+                <notice translate="true">Please only enable this when you are absolutely sure about what you are doing! This may cause images no longer to be rendered.</notice>
+                <dataScope>replace_media_urls</dataScope>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">false</rule>
+                </validation>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
         <field formElement="checkbox" name="enabled" sortOrder="9">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">

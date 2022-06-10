@@ -15,6 +15,7 @@ interface SiteInterface extends ExtensibleDataInterface
     const SITE_ID = 'site_id';
     const API_USERNAME = 'api_username';
     const API_PASSWORD = 'api_password';
+    const REPLACE_MEDIA_URLS = 'replace_media_urls';
     const ENABLE_BLOG = 'enable_blog';
     const BLOG_PREFIX = 'blog_prefix';
     const BLOG_STORES = 'blog_stores';
@@ -109,6 +110,19 @@ interface SiteInterface extends ExtensibleDataInterface
      * @return SiteInterface
      */
     public function setApiPassword(?string $apiPassword);
+
+    /**
+    * Get replace_media_urls
+    * @return bool
+    */
+    public function getReplaceMediaUrls(): ?bool;
+
+    /**
+    * Set replace_media_urls
+    * @param bool $replaceMediaUrls
+    * @return SiteInterface
+    */
+    public function setReplaceMediaUrls(?bool $replaceMediaUrls);
 
     /**
      * Get enable_blog

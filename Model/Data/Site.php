@@ -144,6 +144,25 @@ class Site extends AbstractExtensibleObject implements SiteInterface
     }
 
     /**
+     * Get replace_media_urls
+     * @return bool|null
+     */
+    public function getReplaceMediaUrls(): bool
+    {
+        return (bool) $this->_get(self::REPLACE_MEDIA_URLS);
+    }
+
+    /**
+     * Set replace_media_urls
+     * @param bool $replaceMediaUrls
+     * @return SiteInterface
+     */
+    public function setReplaceMediaUrls($replaceMediaUrls)
+    {
+        return $this->setData(self::REPLACE_MEDIA_URLS, $replaceMediaUrls);
+    }
+
+    /**
      * Get enable_blog
      * @return bool|null
      */
@@ -161,13 +180,6 @@ class Site extends AbstractExtensibleObject implements SiteInterface
     {
         return $this->setData(self::ENABLE_BLOG, $enableBlog);
     }
-
-    /**
-     * - Add data rentation for route prefix + store views
-     * - Add check at cronjob per site to check which blog is enabled
-     * - Add check at cronjob for all stores to see which is applicable
-     * - Create rewrite URLs
-     */
 
      /**
      * Get blog_prefix
