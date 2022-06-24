@@ -53,6 +53,8 @@ class Save extends Action
             return $resultRedirect->setPath('*/*/');
         }
 
+        $data['blog_stores'] = is_array($data['blog_stores']) ? join(',', $data['blog_stores']) : $data['blog_stores'];
+
         $model->setData($data);
 
         try {

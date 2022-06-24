@@ -142,4 +142,80 @@ class Site extends AbstractExtensibleObject implements SiteInterface
     {
         return $this->setData(self::API_PASSWORD, $apiPassword);
     }
+
+    /**
+     * Get replace_media_urls
+     * @return bool|null
+     */
+    public function getReplaceMediaUrls(): bool
+    {
+        return (bool) $this->_get(self::REPLACE_MEDIA_URLS);
+    }
+
+    /**
+     * Set replace_media_urls
+     * @param bool $replaceMediaUrls
+     * @return SiteInterface
+     */
+    public function setReplaceMediaUrls($replaceMediaUrls)
+    {
+        return $this->setData(self::REPLACE_MEDIA_URLS, $replaceMediaUrls);
+    }
+
+    /**
+     * Get enable_blog
+     * @return bool|null
+     */
+    public function getEnableBlog(): bool
+    {
+        return (bool) $this->_get(self::ENABLE_BLOG);
+    }
+
+    /**
+     * Set enable_blog
+     * @param bool $enableBlog
+     * @return SiteInterface
+     */
+    public function setEnableBlog($enableBlog)
+    {
+        return $this->setData(self::ENABLE_BLOG, $enableBlog);
+    }
+
+     /**
+     * Get blog_prefix
+     * @return string
+     */
+    public function getBlogPrefix(): ?string
+    {
+        return $this->_get(self::BLOG_PREFIX);
+    }
+
+    /**
+     * Set blog_prefix
+     * @param string $apiPassword
+     * @return SiteInterface
+     */
+    public function setBlogPrefix(?string $blogPrefix)
+    {
+        return $this->setData(self::BLOG_PREFIX, $blogPrefix);
+    }
+
+     /**
+     * Get blog_stores
+     * @return string
+     */
+    public function getBlogStores(): string
+    {
+        return $this->_get(self::BLOG_STORES);
+    }
+
+    /**
+     * Set blog_stores
+     * @param string $blogStores
+     * @return SiteInterface
+     */
+    public function setBlogStores(string $blogStores)
+    {
+        return $this->setData(self::BLOG_STORES, $blogStores);
+    }
 }

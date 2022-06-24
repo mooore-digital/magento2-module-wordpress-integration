@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.0] - 2022-06-24
+### Added
+- Added site settings to enable the media URL replace option
+- Add basic blog functionality
+
 ## [0.3.0] - 2021-02-10
 ### Added
 - Added optional API credential functionality for Wordpress' Application Passwords plugin
