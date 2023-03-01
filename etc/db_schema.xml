@@ -15,6 +15,7 @@
         <column length="255" name="api_password" nullable="true" xsi:type="varchar"/>
         <column default="0" name="replace_media_urls" nullable="false" xsi:type="boolean"/>
         <column default="0" name="enable_blog" nullable="false" xsi:type="boolean"/>
+        <column default="0" name="enable_blog_categories" nullable="false" xsi:type="boolean"/>
         <column length="255" name="blog_prefix" nullable="true" xsi:type="varchar"/>
         <column length="255" name="blog_stores" nullable="false" xsi:type="varchar"/>
     </table>

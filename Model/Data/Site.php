@@ -181,6 +181,26 @@ class Site extends AbstractExtensibleObject implements SiteInterface
         return $this->setData(self::ENABLE_BLOG, $enableBlog);
     }
 
+    /**
+     * Get enable_blog_catgories
+     * @return bool
+     */
+    public function getEnableBlogCategories(): ?bool
+    {
+        return (bool) $this->_get(self::ENABLE_BLOG_CATEGORIES);
+    }
+
+    /**
+     * Set enable_blog
+     * @param bool $enableBlogCategories
+     * @return SiteInterface
+     */
+    public function setEnableBlogCategories(?bool $enableBlogCategories)
+    {
+        return $this->setData(self::ENABLE_BLOG_CATEGORIES, $enableBlogCategories);
+    }
+
+
      /**
      * Get blog_prefix
      * @return string

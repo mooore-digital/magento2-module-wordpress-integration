@@ -17,6 +17,7 @@ interface SiteInterface extends ExtensibleDataInterface
     const API_PASSWORD = 'api_password';
     const REPLACE_MEDIA_URLS = 'replace_media_urls';
     const ENABLE_BLOG = 'enable_blog';
+    const ENABLE_BLOG_CATEGORIES = 'enable_blog_categories';
     const BLOG_PREFIX = 'blog_prefix';
     const BLOG_STORES = 'blog_stores';
 
@@ -136,6 +137,19 @@ interface SiteInterface extends ExtensibleDataInterface
      * @return SiteInterface
      */
     public function setEnableBlog(?bool $enableBlog);
+
+    /**
+     * Get enable_blog_catgories
+     * @return bool
+     */
+    public function getEnableBlogCategories(): ?bool;
+
+    /**
+     * Set enable_blog
+     * @param bool $enableBlogCategories
+     * @return SiteInterface
+     */
+    public function setEnableBlogCategories(?bool $enableBlogCategories);
 
     /**
      * Get blog_prefix
