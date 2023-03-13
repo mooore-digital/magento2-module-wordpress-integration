@@ -149,7 +149,7 @@ interface SiteInterface extends ExtensibleDataInterface
      * @param bool $enableBlogCategories
      * @return SiteInterface
      */
-    public function setEnableBlogCategories(?bool $enableBlogCategories);
+    public function setEnableBlogCategories(?bool $enableBlogCategories): SiteInterface;
 
     /**
      * Get blog_prefix
