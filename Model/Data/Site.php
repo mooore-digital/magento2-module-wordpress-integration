@@ -211,7 +211,7 @@ class Site extends AbstractExtensibleObject implements SiteInterface
 
     /**
      * Set blog_title
-     * @param string $apiPassword
+     * @param string $blogTitle
      * @return SiteInterface
      */
     public function setBlogTitle(?string $blogTitle)
@@ -231,7 +231,7 @@ class Site extends AbstractExtensibleObject implements SiteInterface
 
     /**
      * Set blog_prefix
-     * @param string $apiPassword
+     * @param string $blogPrefix
      * @return SiteInterface
      */
     public function setBlogPrefix(?string $blogPrefix)
