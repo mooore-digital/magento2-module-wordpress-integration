@@ -18,6 +18,7 @@ interface SiteInterface extends ExtensibleDataInterface
     const REPLACE_MEDIA_URLS = 'replace_media_urls';
     const ENABLE_BLOG = 'enable_blog';
     const ENABLE_BLOG_CATEGORIES = 'enable_blog_categories';
+    const BLOG_TITLE = 'blog_title';
     const BLOG_PREFIX = 'blog_prefix';
     const BLOG_STORES = 'blog_stores';
 
@@ -150,6 +151,19 @@ interface SiteInterface extends ExtensibleDataInterface
      * @return SiteInterface
      */
     public function setEnableBlogCategories(?bool $enableBlogCategories): SiteInterface;
+
+    /**
+     * Get blog_title
+     * @return string
+     */
+    public function getBlogTitle(): ?string;
+
+    /**
+     * Set blog_title
+     * @param string $blogTitle
+     * @return SiteInterface
+     */
+    public function setBlogTitle(?string $blogTitle);
 
     /**
      * Get blog_prefix
